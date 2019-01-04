@@ -8,7 +8,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:modern": "ng build --plugin ngx-build-modern --prod",
+    "build:modern:app": "ng build --plugin ngx-build-modern --project app --prod"
   },
   "repository": {
     "type": "git",
