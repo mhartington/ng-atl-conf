@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Speakers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row>
+        <ng-container *ngFor="let speaker of speakers | async">
+          <ion-col size="12" size-sm="6" size-lg="4" *ngIf="!speaker.mc" text-center>
+            <ion-card tappable (click)="goToSpeaker(speaker)">
+              <div class="card-img">
+                <ion-img [src]="speaker.avatar" [alt]="speaker.name"></ion-img>
+              </div>
+              <ion-item lines="none" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
+                <ion-label>
+                  <h1>{{speaker.name}}</h1>
+                  <p>{{speaker.company}}</p>
+                </ion-label>
+                <ion-button *ngIf="speaker.twitterHandle" fill="clear" slot="end" (click)="goToSpeakerTwitter(speaker)">
+                  <ion-icon slot="icon-only" color="twitter" name="logo-twitter"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-card>
+          </ion-col>
+        </ng-container>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

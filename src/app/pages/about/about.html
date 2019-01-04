@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ngAtlanta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="about-header">
+    <img src="./assets/img/ng-atl.svg" alt="ngAtlanta logo">
+  </div>
+  <div padding>
+    <p>
+      ngAtlanta is conference that focuses on create an inclusive event for developers of all walks of life. Focusing on all things Angular, the conference brings together community members from all over the world to share their knowledge and experience.
+    </p>
+
+    <h4>A special "Thank you" to our sponsors</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let sponsor of sponsors | async">
+          <ion-card>
+            <div class="card-img" padding>
+              <img [src]="sponsor.logo" [alt]="sponsor.name">
+            </div>
+            <ion-card-content>
+              <h2>{{sponsor.name}}</h2>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

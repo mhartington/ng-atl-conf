@@ -1,0 +1,18 @@
+.about-header {
+  background-color: var(--ion-color-dark);
+  text-align: center;
+  padding: 50px 0;
+  img {
+    max-width: 362px;
+  }
+}
+
+.card-img {
+  height: 150px;
+  overflow: hidden;
+  img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+  }
+}

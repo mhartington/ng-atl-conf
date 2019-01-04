@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{speaker?.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="openTwitter(speaker.twitterHandle)">
+        <ion-icon name="logo-twitter" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div padding text-center *ngIf="speaker" class="banner">
+    <div class="speaker-img"><img [src]="speaker.avatar" [alt]="speaker.name"></div>
+  </div>
+  <div padding>
+    <p>{{speaker?.bio}}</p>
+  </div>
+</ion-content>

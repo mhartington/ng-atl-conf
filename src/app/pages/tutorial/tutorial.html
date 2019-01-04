@@ -1,0 +1,52 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false">
+    <ion-slide>
+      <div class="tut-header">
+        <img src="./assets/img/ng-atl.svg" alt="ngAtlanta logo">
+      </div>
+      <div padding>
+        <h2 class="slide-title">
+          Welcome to
+          <strong>ngAtlanta</strong>
+        </h2>
+        <p><strong>ngAtlanta</strong> is a community conference focused on diversity and inclusion.
+        </p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div><img src="assets/img/community.jpg" class="slide-image" /></div>
+      <div padding>
+        <h2 class="slide-title">You Can Sit With Us</h2>
+        <p>Join us for 2 days of workshops and 2 days of talk all about Angular and the Angular Ecosystem.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
+      <h2 class="slide-title">What is Ionic Framework?</h2>
+      <div padding>
+        <p>
+          <strong>Ionic Framework</strong> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+      </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/angular.svg" class="ng-logo" />
+      <h2 class="slide-title">Join the Community!</h2>
+      <ion-button fill="clear" (click)="startApp()">
+        Continue
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

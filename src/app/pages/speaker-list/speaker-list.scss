@@ -1,0 +1,10 @@
+.card-img {
+  margin: auto;
+  height: 275px;
+  overflow: hidden;
+  ion-img {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "ngAtlanta",
+  "short_name": "ngAtl",
+  "start_url": "/app/tabs/schedule",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/appicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#222428",
+  "theme_color": "#222428"
+}
