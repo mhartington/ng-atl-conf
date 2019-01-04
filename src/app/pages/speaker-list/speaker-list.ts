@@ -23,7 +23,7 @@ export class SpeakerListPage implements OnInit {
   }
   goToSpeaker(speaker) {
     this.router.navigateByUrl(
-      `/app/tabs/speakers/speaker-details/${speaker.id}`
+      `/app/tabs/speakers/${speaker.id}`
     );
   }
   goToSpeakerTwitter(speaker: any) {

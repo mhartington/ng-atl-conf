@@ -13,11 +13,11 @@
       <ion-row>
         <ng-container *ngFor="let speaker of speakers | async">
           <ion-col size="12" size-sm="6" size-lg="4" *ngIf="!speaker.mc" text-center>
-            <ion-card tappable (click)="goToSpeaker(speaker)">
+            <ion-card tappable  routerLink="/app/tabs/speakers/{{speaker.id}}" >
               <div class="card-img">
-                <ion-img [src]="speaker.avatar" [alt]="speaker.name"></ion-img>
+                <lazy-img [src]="speaker.avatar" [alt]="speaker.name"></lazy-img>
               </div>
-              <ion-item lines="none" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
+              <ion-item lines="none">
                 <ion-label>
                   <h1>{{speaker.name}}</h1>
                   <p>{{speaker.company}}</p>

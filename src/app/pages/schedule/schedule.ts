@@ -8,7 +8,6 @@ import {
   ToastController
 } from '@ionic/angular';
 
-import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 
 import { ConferenceData } from '../../providers/conference-data';
 

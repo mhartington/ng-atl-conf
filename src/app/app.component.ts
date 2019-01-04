@@ -2,8 +2,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Events, MenuController, Platform } from '@ionic/angular';
+import { Events, MenuController, Platform, ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+
+import { SwUpdate } from '@angular/service-worker';
+
 
 import { UserData } from './providers/user-data';
 
@@ -46,12 +49,31 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
-    private userData: UserData
+    private userData: UserData,
+    private swUpdate: SwUpdate,
+    private toastCtrl: ToastController,
   ) {
     this.initializeApp();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.swUpdate.available.subscribe(async res => {
+      const toast = await this.toastCtrl.create({
+        message: 'Update available!',
+        showCloseButton: true,
+        position: 'bottom',
+        closeButtonText: `Reload`
+      });
+      console.log('update ready', res);
+      await toast.present();
+      toast.onDidDismiss().then(() => {
+        this.swUpdate.activateUpdate();
+        window.location.reload();
+      });
+    });
+
+
     this.checkLoginStatus();
     this.listenForLoginEvents();
   }

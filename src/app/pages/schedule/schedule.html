@@ -27,8 +27,7 @@
 
 <ion-content>
   <ion-list #scheduleList >
-    <ion-item *ngFor="let session of sessions | async ">
-<!-- routerLink="/app/tabs/schedule/session/{{session.id}}" -->
+    <ion-item *ngFor="let session of sessions | async " routerLink="/app/tabs/schedule/{{session.id}}">
       {{session.name}}
     </ion-item>
     <!-- <ion&#45;item&#45;group *ngFor="let group of groups" [hidden]="group.hide"> -->

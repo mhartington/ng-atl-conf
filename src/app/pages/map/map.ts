@@ -1,6 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'page-map',
@@ -10,39 +9,40 @@ import { Platform } from '@ionic/angular';
 export class MapPage implements AfterViewInit {
   @ViewChild('mapCanvas') mapElement: ElementRef;
 
-  constructor(public confData: ConferenceData, public platform: Platform) {}
+  constructor(public confData: ConferenceData) {}
 
   async ngAfterViewInit() {
     const googleMaps = await getGoogleMaps(
       'AIzaSyB8pf6ZdFQj5qw7rc_HSGrhUwQKfIe9ICw'
     );
-    this.confData.getMap().subscribe((mapData: any) => {
-      const mapEle = this.mapElement.nativeElement;
+    const mapData = this.confData.getMap();
+    const mapEle = this.mapElement.nativeElement;
 
-      const map = new googleMaps.Map(mapEle, {
-        center: mapData.find((d: any) => d.center),
-        zoom: 18
+    const map = new googleMaps.Map(mapEle, {
+      center: mapData.find((d: any) => d.center),
+      zoom: 18
+    });
+
+    mapData.forEach((markerData: any) => {
+      const infoWindow = new googleMaps.InfoWindow({
+        content: `<div style="color: #333; font-weight: 500; font-size: 14px; font-family: Roboto,Arial;">${
+          markerData.name
+        }</div>`
       });
 
-      mapData.forEach((markerData: any) => {
-        const infoWindow = new googleMaps.InfoWindow({
-          content: `<div style="color: #333; font-weight: 500; font-size: 14px; font-family: Roboto,Arial;">${markerData.name}</div>`
-        });
-
-        const marker = new googleMaps.Marker({
-          position: markerData,
-          map,
-          title: markerData.name
-        });
-
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
+      const marker = new googleMaps.Marker({
+        position: markerData,
+        map,
+        title: markerData.name
       });
 
-      googleMaps.event.addListenerOnce(map, 'idle', () => {
-        mapEle.classList.add('show-map');
+      marker.addListener('click', () => {
+        infoWindow.open(map, marker);
       });
+    });
+
+    googleMaps.event.addListenerOnce(map, 'idle', () => {
+      mapEle.classList.add('show-map');
     });
   }
 }

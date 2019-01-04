@@ -1,49 +1,50 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+      <ion-back-button defaultHref="/app/tabs/schedule"></ion-back-button>
     </ion-buttons>
     <ion-title>{{session?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div padding *ngIf="session">
-    <ion-grid no-padding>
-      <ion-row>
-        <ion-col size="6">
-          <span *ngFor="let track of session?.tracks" [class]="'session-track-'+track.toLowerCase()">{{track}}</span>
-        </ion-col>
-        <ion-col size="6" text-right [ngClass]="{'show-favorite': isFavorite}">
-          <ion-icon name="heart-empty" size="large" class="icon-heart-empty" (click)="toggleFavorite()"></ion-icon>
-          <ion-icon name="heart" color="danger" size="large" class="icon-heart" (click)="toggleFavorite()"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <h1>{{session.name}}</h1>
-    <p>{{session.description}}</p>
-    <ion-text color="medium">
-      {{session.timeStart}} &ndash; {{session.timeEnd}}
-      <br /> {{session.location}}
-    </ion-text>
-  </div>
-
-  <ion-list>
-    <ion-item (click)="sessionClick('watch')" button>
-      <ion-label color="primary">Watch</ion-label>
-    </ion-item>
-    <ion-item (click)="sessionClick('add to calendar')" button>
-      <ion-label color="primary">Add to Calendar</ion-label>
-    </ion-item>
-    <ion-item (click)="sessionClick('mark as unwatched')" button>
-      <ion-label color="primary">Mark as Unwatched</ion-label>
-    </ion-item>
-    <ion-item (click)="sessionClick('download video')" button>
-      <ion-label color="primary">Download Video</ion-label>
-      <ion-icon slot="end" color="primary" size="small" name="cloud-download"></ion-icon>
-    </ion-item>
-    <ion-item (click)="sessionClick('leave feedback')" button>
-      <ion-label color="primary">Leave Feedback</ion-label>
-    </ion-item>
-  </ion-list>
+  <H1>Hello</H1>
+  <!-- <div padding *ngIf="session"> -->
+  <!--   <ion&#45;grid no&#45;padding> -->
+  <!--     <ion&#45;row> -->
+  <!--       <ion&#45;col size="6"> -->
+  <!--         <span *ngFor="let track of session?.tracks" [class]="'session&#45;track&#45;'+track.toLowerCase()">{{track}}</span> -->
+  <!--       </ion&#45;col> -->
+  <!--       <ion&#45;col size="6" text&#45;right [ngClass]="{'show&#45;favorite': isFavorite}"> -->
+  <!--         <ion&#45;icon name="heart&#45;empty" size="large" class="icon&#45;heart&#45;empty" (click)="toggleFavorite()"></ion&#45;icon> -->
+  <!--         <ion&#45;icon name="heart" color="danger" size="large" class="icon&#45;heart" (click)="toggleFavorite()"></ion&#45;icon> -->
+  <!--       </ion&#45;col> -->
+  <!--     </ion&#45;row> -->
+  <!--   </ion&#45;grid> -->
+  <!--   <h1>{{session.name}}</h1> -->
+  <!--   <p>{{session.description}}</p> -->
+  <!--   <ion&#45;text color="medium"> -->
+  <!--     {{session.timeStart}} &#38;ndash; {{session.timeEnd}} -->
+  <!--     <br /> {{session.location}} -->
+  <!--   </ion&#45;text> -->
+  <!-- </div> -->
+  <!--  -->
+  <!-- <ion&#45;list> -->
+  <!--   <ion&#45;item (click)="sessionClick('watch')" button> -->
+  <!--     <ion&#45;label color="primary">Watch</ion&#45;label> -->
+  <!--   </ion&#45;item> -->
+  <!--   <ion&#45;item (click)="sessionClick('add to calendar')" button> -->
+  <!--     <ion&#45;label color="primary">Add to Calendar</ion&#45;label> -->
+  <!--   </ion&#45;item> -->
+  <!--   <ion&#45;item (click)="sessionClick('mark as unwatched')" button> -->
+  <!--     <ion&#45;label color="primary">Mark as Unwatched</ion&#45;label> -->
+  <!--   </ion&#45;item> -->
+  <!--   <ion&#45;item (click)="sessionClick('download video')" button> -->
+  <!--     <ion&#45;label color="primary">Download Video</ion&#45;label> -->
+  <!--     <ion&#45;icon slot="end" color="primary" size="small" name="cloud&#45;download"></ion&#45;icon> -->
+  <!--   </ion&#45;item> -->
+  <!--   <ion&#45;item (click)="sessionClick('leave feedback')" button> -->
+  <!--     <ion&#45;label color="primary">Leave Feedback</ion&#45;label> -->
+  <!--   </ion&#45;item> -->
+  <!-- </ion&#45;list> -->
 </ion-content>
