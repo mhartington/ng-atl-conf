@@ -13,12 +13,11 @@ import {
   styleUrls: ['./lazy-img.component.scss']
 })
 export class LazyImgComponent {
-  hasLoaded: boolean = false;
   observer: IntersectionObserver;
   @Input() src = '';
   @Input() alt = '';
   @HostBinding('class.loaded') isLoaded: boolean = false;
-  @ViewChild('lazyImage') lazyImage: ElementRef;
+  @ViewChild('lazyImage') lazyImage: ElementRef<HTMLImageElement>;
 
   constructor() {}
 
@@ -70,10 +69,7 @@ export class LazyImgComponent {
 
   preload(targetEl) {
     return this.fetchImage(this.src)
-      .then(() => {
-        this.applyImage(targetEl, this.src);
-        this.hasLoaded = true;
-      })
+      .then(() =>  this.applyImage(targetEl, this.src))
       .then(() => (this.isLoaded = true));
   }
 }

@@ -17,7 +17,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: 'ng-atl',
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),

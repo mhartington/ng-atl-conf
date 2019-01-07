@@ -7,12 +7,23 @@ ion-toolbar {
   background-color: var(--ion-color-dark);
   text-align: center;
   padding: 50px 0;
+
+  &.no-padding {
+    padding: 0;
+  }
   img {
     max-width: 362px;
   }
+
+  .community-img {
+    height: 298px;
+    width: auto;
+  }
 }
 
-
+img {
+  max-width: 362px;
+}
 .ng-logo {
   max-width: 400px;
 }

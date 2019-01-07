@@ -12,20 +12,17 @@
     <ion-grid fixed>
       <ion-row>
         <ng-container *ngFor="let speaker of speakers | async">
-          <ion-col size="12" size-sm="6" size-lg="4" *ngIf="!speaker.mc" text-center>
+          <ion-col size="12" size-sm="6" size-lg="4" *ngIf="!speaker.mc">
             <ion-card tappable  routerLink="/app/tabs/speakers/{{speaker.id}}" >
               <div class="card-img">
                 <lazy-img [src]="speaker.avatar" [alt]="speaker.name"></lazy-img>
               </div>
-              <ion-item lines="none">
+              <ion-card-content>
+                <h1>{{speaker.name}}</h1>
                 <ion-label>
-                  <h1>{{speaker.name}}</h1>
                   <p>{{speaker.company}}</p>
                 </ion-label>
-                <ion-button *ngIf="speaker.twitterHandle" fill="clear" slot="end" (click)="goToSpeakerTwitter(speaker)">
-                  <ion-icon slot="icon-only" color="twitter" name="logo-twitter"></ion-icon>
-                </ion-button>
-              </ion-item>
+              </ion-card-content>
             </ion-card>
           </ion-col>
         </ng-container>

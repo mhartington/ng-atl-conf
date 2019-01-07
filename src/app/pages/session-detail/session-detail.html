@@ -3,48 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/schedule"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{session?.name}}</ion-title>
+    <ion-title>{{session?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <H1>Hello</H1>
-  <!-- <div padding *ngIf="session"> -->
-  <!--   <ion&#45;grid no&#45;padding> -->
-  <!--     <ion&#45;row> -->
-  <!--       <ion&#45;col size="6"> -->
-  <!--         <span *ngFor="let track of session?.tracks" [class]="'session&#45;track&#45;'+track.toLowerCase()">{{track}}</span> -->
-  <!--       </ion&#45;col> -->
-  <!--       <ion&#45;col size="6" text&#45;right [ngClass]="{'show&#45;favorite': isFavorite}"> -->
-  <!--         <ion&#45;icon name="heart&#45;empty" size="large" class="icon&#45;heart&#45;empty" (click)="toggleFavorite()"></ion&#45;icon> -->
-  <!--         <ion&#45;icon name="heart" color="danger" size="large" class="icon&#45;heart" (click)="toggleFavorite()"></ion&#45;icon> -->
-  <!--       </ion&#45;col> -->
-  <!--     </ion&#45;row> -->
-  <!--   </ion&#45;grid> -->
-  <!--   <h1>{{session.name}}</h1> -->
-  <!--   <p>{{session.description}}</p> -->
-  <!--   <ion&#45;text color="medium"> -->
-  <!--     {{session.timeStart}} &#38;ndash; {{session.timeEnd}} -->
-  <!--     <br /> {{session.location}} -->
-  <!--   </ion&#45;text> -->
-  <!-- </div> -->
-  <!--  -->
-  <!-- <ion&#45;list> -->
-  <!--   <ion&#45;item (click)="sessionClick('watch')" button> -->
-  <!--     <ion&#45;label color="primary">Watch</ion&#45;label> -->
-  <!--   </ion&#45;item> -->
-  <!--   <ion&#45;item (click)="sessionClick('add to calendar')" button> -->
-  <!--     <ion&#45;label color="primary">Add to Calendar</ion&#45;label> -->
-  <!--   </ion&#45;item> -->
-  <!--   <ion&#45;item (click)="sessionClick('mark as unwatched')" button> -->
-  <!--     <ion&#45;label color="primary">Mark as Unwatched</ion&#45;label> -->
-  <!--   </ion&#45;item> -->
-  <!--   <ion&#45;item (click)="sessionClick('download video')" button> -->
-  <!--     <ion&#45;label color="primary">Download Video</ion&#45;label> -->
-  <!--     <ion&#45;icon slot="end" color="primary" size="small" name="cloud&#45;download"></ion&#45;icon> -->
-  <!--   </ion&#45;item> -->
-  <!--   <ion&#45;item (click)="sessionClick('leave feedback')" button> -->
-  <!--     <ion&#45;label color="primary">Leave Feedback</ion&#45;label> -->
-  <!--   </ion&#45;item> -->
-  <!-- </ion&#45;list> -->
+  <div padding *ngIf="session">
+    <h1>{{session.title}}</h1>
+    <p>{{session.description}}</p>
+    <p>At: {{session.time}}</p>
+  </div>
 </ion-content>

@@ -13,7 +13,7 @@ export class MapPage implements AfterViewInit {
 
   async ngAfterViewInit() {
     const googleMaps = await getGoogleMaps(
-      'AIzaSyB8pf6ZdFQj5qw7rc_HSGrhUwQKfIe9ICw'
+      'AIzaSyDBwVxbIzHCUWAypkqfikRMuQd7CgNMmnc'
     );
     const mapData = this.confData.getMap();
     const mapEle = this.mapElement.nativeElement;
@@ -56,7 +56,7 @@ function getGoogleMaps(apiKey: string): Promise<any> {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.31`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=weekly`;
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);

@@ -1,160 +1,65 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-// import { UserData } from './user-data';
+import { format } from 'date-fns/esm';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConferenceData {
   data: any;
-    map = [
+  map = [
     {
-      name : "The Hotel at Avalon, Autograph Collection",
+      name: 'The Hotel at Avalon, Autograph Collection',
       lat: 34.071531,
       lng: -84.272747,
       center: true
     },
     {
-      name: "Barleygarden Kitchen & Craft Bar",
+      name: 'Barleygarden Kitchen & Craft Bar',
       lat: 34.0709743,
       lng: -84.2733487
     },
     {
-      name: "Starbucks",
+      name: 'Starbucks',
       lat: 34.0710057,
       lng: -84.2732439
     }
-  ]
+  ];
 
+  constructor(private db: AngularFirestore) {}
 
-  constructor(public db: AngularFirestore) {}
-  getStore(collection: string){
+  getStore(collection: string) {
     return this.db.collection(collection);
   }
-  getDoc(collection: string){
+  getDoc(collection: string) {
     return this.db.doc(collection);
   }
-
-  // load(): any {
-  //   if (this.data) {
-  //     return of(this.data);
-  //   } else {
-  //     return this.http
-  //       .get('assets/data/data.json')
-  //       .pipe(map(this.processData, this));
-  //   }
-  // }
-  //
-  processData(data: any) {
-    // just some good 'ol JS fun with objects and arrays
-    // build up the data by linking speakers to sessions
-    this.data = data;
-
-    return this.data;
-  }
-
-  // getTimeline(
-  //   dayIndex: number,
-  //   queryText = '',
-  //   excludeTracks: any[] = [],
-  //   segment = 'all'
-  // ) {
-  //   return this.load().pipe(
-  //     map((data: any) => {
-  //       const day = data.schedule[dayIndex];
-  //       day.shownSessions = 0;
-  //
-  //       queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
-  //       const queryWords = queryText.split(' ').filter(w => !!w.trim().length);
-  //
-  //       day.groups.forEach((group: any) => {
-  //         group.hide = true;
-  //
-  //         group.sessions.forEach((session: any) => {
-  //           // check if this session should show or not
-  //           this.filterSession(session, queryWords, excludeTracks, segment);
-  //
-  //           if (!session.hide) {
-  //             // if this session is not hidden then this group should show
-  //             group.hide = false;
-  //             day.shownSessions++;
-  //           }
-  //         });
-  //       });
-  //
-  //       return day;
-  //     })
-  //   );
-  // }
-  //
-  // filterSession(
-  //   session: any,
-  //   queryWords: string[],
-  //   excludeTracks: any[],
-  //   segment: string
-  // ) {
-  //   let matchesQueryText = false;
-  //   if (queryWords.length) {
-  //     // of any query word is in the session name than it passes the query test
-  //     queryWords.forEach((queryWord: string) => {
-  //       if (session.name.toLowerCase().indexOf(queryWord) > -1) {
-  //         matchesQueryText = true;
-  //       }
-  //     });
-  //   } else {
-  //     // if there are no query words then this session passes the query test
-  //     matchesQueryText = true;
-  //   }
-  //
-  //   // if any of the sessions tracks are not in the
-  //   // exclude tracks then this session passes the track test
-  //   let matchesTracks = false;
-  //   session.tracks.forEach((trackName: string) => {
-  //     if (excludeTracks.indexOf(trackName) === -1) {
-  //       matchesTracks = true;
-  //     }
-  //   });
-  //
-  //   // if the segement is 'favorites', but session is not a user favorite
-  //   // then this session does not pass the segment test
-  //   let matchesSegment = false;
-  //   if (segment === 'favorites') {
-  //     // if (this.user.hasFavorite(session.name)) {
-  //     //   matchesSegment = true;
-  //     // }
-  //   } else {
-  //     matchesSegment = true;
-  //   }
-  //
-  //   // all tests must be true if it should not be hidden
-  //   session.hide = !(matchesQueryText && matchesTracks && matchesSegment);
-  // }
-  //
-  // getSpeakers() {
-  //   return this.load().pipe(
-  //     map((data: any) => {
-  //       return data.speakers.sort((a: any, b: any) => {
-  //         const aName = a.name.split(' ').pop();
-  //         const bName = b.name.split(' ').pop();
-  //         return aName.localeCompare(bName);
-  //       });
-  //     })
-  //   );
-  // }
-  //
-  // getTracks() {
-  //   return this.load().pipe(
-  //     map((data: any) => {
-  //       return data.tracks.sort();
-  //     })
-  //   );
-  // }
-  //
   getMap() {
     return this.map;
+  }
+  processData(sessions: any[]) {
+    let placeholder = [
+      { date: '09-01-2019', sessions: [] },
+      { date: '10-01-2019', sessions: [] },
+      { date: '11-01-2019', sessions: [] },
+      { date: '12-01-2019', sessions: [] }
+    ];
+    sessions.map((session: any) => {
+      placeholder
+        .find(entry => entry.date === session.date)
+        .sessions.push(session);
+    });
+    return placeholder;
+  }
+  orderSessions(sessions) {
+    return sessions.sort((a, b) => this.convert(a.time) - this.convert(b.time));
+  }
+  formatDate(date) {
+    const [day, month, year] = date.split('-');
+    const result = new Date(year, month - 1, day);
+    return format(result, 'eeee');
+  }
+  convert(time: string) {
+    return parseInt(time.split(':').join(''), 10);
   }
 }

@@ -103,23 +103,15 @@
   --ion-color-tint: #e05c4c;
 }
 
-.ion-color-vimeo {
-  --ion-color-base: #23b6ea;
-  --ion-color-base-rgb: 35, 182, 234;
+.ion-color-youtube {
+  --ion-color-base: #FF0000;
+  --ion-color-base-rgb: 255,0,0;
   --ion-color-contrast: #ffffff;
-  --ion-color-contrast-rgb: 255, 255, 255;
-  --ion-color-shade: #1fa0ce;
-  --ion-color-tint: #39bdec;
+  --ion-color-contrast-rgb: 255,255,255;
+  --ion-color-shade: #e00000;
+  --ion-color-tint: #ff1a1a;
 }
 
-.ion-color-facebook {
-  --ion-color-base: #3b5998;
-  --ion-color-base-rgb: 59, 89, 152;
-  --ion-color-contrast: #ffffff;
-  --ion-color-contrast-rgb: 255, 255, 255;
-  --ion-color-shade: #344e86;
-  --ion-color-tint: #4f6aa2;
-}
 
 
 // App Material Design Variables
