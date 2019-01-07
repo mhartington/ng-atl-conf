@@ -8,8 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "precommit": "npm run lint"
+    "lint": "ng lint"
   },
   "repository": {
     "type": "git",
