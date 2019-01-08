@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
       icon: 'information-circle'
     }
   ];
-  loggedIn = false;
 
   constructor(
     private menu: MenuController,

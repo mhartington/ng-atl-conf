@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { ConferenceData } from '../../providers/conference-data';
 
 @Component({
   selector: 'page-map',
@@ -9,36 +8,16 @@ import { ConferenceData } from '../../providers/conference-data';
 export class MapPage implements AfterViewInit {
   @ViewChild('mapCanvas') mapElement: ElementRef;
 
-  constructor(public confData: ConferenceData) {}
 
   async ngAfterViewInit() {
     const googleMaps = await getGoogleMaps(
-      'AIzaSyDBwVxbIzHCUWAypkqfikRMuQd7CgNMmnc'
+      'AIzaSyBSrd2c8lfdoyzQzU7egIb-CzzQWFX4_ms'
     );
-    const mapData = this.confData.getMap();
     const mapEle = this.mapElement.nativeElement;
 
     const map = new googleMaps.Map(mapEle, {
-      center: mapData.find((d: any) => d.center),
+      center: { lat: 34.071530999958846, lng: -84.27271337505712 },
       zoom: 18
-    });
-
-    mapData.forEach((markerData: any) => {
-      const infoWindow = new googleMaps.InfoWindow({
-        content: `<div style="color: #333; font-weight: 500; font-size: 14px; font-family: Roboto,Arial;">${
-          markerData.name
-        }</div>`
-      });
-
-      const marker = new googleMaps.Marker({
-        position: markerData,
-        map,
-        title: markerData.name
-      });
-
-      marker.addListener('click', () => {
-        infoWindow.open(map, marker);
-      });
     });
 
     googleMaps.event.addListenerOnce(map, 'idle', () => {

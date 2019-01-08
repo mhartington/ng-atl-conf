@@ -6,39 +6,15 @@ import { format } from 'date-fns/esm';
   providedIn: 'root'
 })
 export class ConferenceData {
-  data: any;
-  map = [
-    {
-      name: 'The Hotel at Avalon, Autograph Collection',
-      lat: 34.071531,
-      lng: -84.272747,
-      center: true
-    },
-    {
-      name: 'Barleygarden Kitchen & Craft Bar',
-      lat: 34.0709743,
-      lng: -84.2733487
-    },
-    {
-      name: 'Starbucks',
-      lat: 34.0710057,
-      lng: -84.2732439
-    }
-  ];
-
   constructor(private db: AngularFirestore) {}
-
   getStore(collection: string) {
     return this.db.collection(collection);
   }
   getDoc(collection: string) {
     return this.db.doc(collection);
   }
-  getMap() {
-    return this.map;
-  }
   processData(sessions: any[]) {
-    let placeholder = [
+    const placeholder = [
       { date: '09-01-2019', sessions: [] },
       { date: '10-01-2019', sessions: [] },
       { date: '11-01-2019', sessions: [] },

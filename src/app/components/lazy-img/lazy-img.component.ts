@@ -1,10 +1,11 @@
 import {
   Component,
-  OnInit,
+  AfterViewInit,
   Input,
   ViewChild,
   ElementRef,
-  HostBinding
+  HostBinding,
+  OnDestroy
 } from '@angular/core';
 
 @Component({
@@ -12,11 +13,12 @@ import {
   templateUrl: './lazy-img.component.html',
   styleUrls: ['./lazy-img.component.scss']
 })
-export class LazyImgComponent {
+export class LazyImgComponent implements AfterViewInit, OnDestroy {
   observer: IntersectionObserver;
   @Input() src = '';
   @Input() alt = '';
-  @HostBinding('class.loaded') isLoaded: boolean = false;
+
+  @HostBinding('class.loaded') isLoaded = false;
   @ViewChild('lazyImage') lazyImage: ElementRef<HTMLImageElement>;
 
   constructor() {}
@@ -52,7 +54,7 @@ export class LazyImgComponent {
   }
 
   applyImage(target: HTMLImageElement, src) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       target.src = src;
       resolve();
     });
@@ -60,7 +62,7 @@ export class LazyImgComponent {
 
   fetchImage(url) {
     return new Promise((resolve, reject) => {
-      let image = new Image();
+      const image = new Image();
       image.src = url;
       image.onload = resolve;
       image.onerror = reject;
@@ -69,7 +71,7 @@ export class LazyImgComponent {
 
   preload(targetEl) {
     return this.fetchImage(this.src)
-      .then(() =>  this.applyImage(targetEl, this.src))
+      .then(() => this.applyImage(targetEl, this.src))
       .then(() => (this.isLoaded = true));
   }
 }
