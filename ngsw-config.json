@@ -5,7 +5,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
-      "updateMode": "lazy",
+      "updateMode": "prefetch",
       "resources": {
         "files": ["/index.html", "/*.css", "/*.bundle.js", "/*.js"]
       }
@@ -13,7 +13,7 @@
     {
       "name": "assets",
       "installMode": "lazy",
-      "updateMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "files": ["/assets/**"]
       }

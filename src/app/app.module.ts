@@ -24,7 +24,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
       enabled: environment.production
     }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],

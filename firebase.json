@@ -1,18 +1,14 @@
 {
   "hosting": {
     "public": "www",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
       }
     ],
-        "headers": [
+    "headers": [
       {
         "source": "ngsw-worker.js",
         "headers": [
@@ -27,12 +23,10 @@
         "headers": [
           {
             "key": "Link",
-            "value":
-              "</7.04e49d8eb2fb82393356.js>;rel=preload;as=script,</styles.6ca7dea9c8016b2e90b2.css>;rel=preload;as=style,</runtime.b9c3647cfc0b1595ea9a.js>;rel=preload;as=script,</polyfills.aa856cd0322808eeef33.js>;rel=preload;as=script,</main.7fc53feca2e8774b9e4e.js>;rel=preload;as=script,</common.72fbe8b0bdf760243b3e.js>;rel=preload;as=script,</170.5ab606715c091859c495.js>;rel=preload;as=script,</146.a26f8a01c499b5f7d6c7.js>;rel=preload;as=script,</114.02dbd1bd3ba6763c64b8.js>;rel=preload;as=script,</48.1ade0b5a0182669ae9f6.js>;rel=preload;as=script,</89.109293eae3dfca38a2a9.js>;rel=preload;as=script,</42.3ebf1f4a754e93f00cfe.js>;rel=preload;as=script,</1.689975cc1f44a711aa08.js>;rel=preload;as=script,</9.114035935fb299cc8634.js>;rel=preload;as=script,</18.e6a637c285e2700795d9.js>;rel=preload;as=script,</97.f715d5b32fdbc6556979.js>;rel=preload;as=script,</5.1af48c97cf8873405b97.js>;rel=preload;as=script,</144.6f27b187ad33a1ea1e94.js>;rel=preload;as=script,</160.a066b6d8bf0cbcc02da7.js>;rel=preload;as=script,</36.d074e644c703d6aeb97e.js>;rel=preload;as=script,"
+            "value": "</styles.6ca7dea9c8016b2e90b2.css>;rel=preload;as=style,</runtime.b9c3647cfc0b1595ea9a.js>;rel=preload;as=script,</polyfills.aa856cd0322808eeef33.js>;rel=preload;as=script,</main.e55471ce66ee46a37bf7.js>;rel=preload;as=script,</common.72fbe8b0bdf760243b3e.js>;rel=preload;as=script,</170.5ab606715c091859c495.js>;rel=preload;as=script,</146.a26f8a01c499b5f7d6c7.js>;rel=preload;as=script,</114.02dbd1bd3ba6763c64b8.js>;rel=preload;as=script,</48.1ade0b5a0182669ae9f6.js>;rel=preload;as=script,</89.109293eae3dfca38a2a9.js>;rel=preload;as=script,</42.3ebf1f4a754e93f00cfe.js>;rel=preload;as=script,</1.689975cc1f44a711aa08.js>;rel=preload;as=script,</9.114035935fb299cc8634.js>;rel=preload;as=script,</18.e6a637c285e2700795d9.js>;rel=preload;as=script,</97.f715d5b32fdbc6556979.js>;rel=preload;as=script,</5.1af48c97cf8873405b97.js>;rel=preload;as=script,</144.6f27b187ad33a1ea1e94.js>;rel=preload;as=script,</160.a066b6d8bf0cbcc02da7.js>;rel=preload;as=script,</36.d074e644c703d6aeb97e.js>;rel=preload;as=script,</7.04e49d8eb2fb82393356.js>;rel=preload;as=script,"
           }
         ]
       }
     ]
-
   }
 }
